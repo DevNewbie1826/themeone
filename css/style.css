@@ -1368,7 +1368,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 
 @media screen and (max-width: 768px) {
     .bot-main .hero-banner {margin: 80px auto 100px;}
-    .bot-main .hero-banner .bg-blur {width: 233px; height: 325px; transform: rotate(-90deg); top: -80%; border-radius: 325px; background: linear-gradient(90deg, #0084FF 0%, #DC3AC7 100%); filter: blur(64px);}
+    .bot-main .hero-banner .bg-blur {width: 75vw; height: 75vw; transform:translate(-50%, -50%) rotate(-90deg); top: 50%;left:50%; border-radius: 325px; background: linear-gradient(90deg, #0084FF 0%, #DC3AC7 100%); filter: blur(64px);}
     .bot-main .explain-section {padding-top: 20px;}
     .bot-main .hero-content {row-gap: 40px;}
     .bot-main .hero-content .bot-image-box {padding: 20px; width: 140px; height: 115px; border-radius: 20px;}
