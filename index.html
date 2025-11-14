@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=yes" />
+	<link rel="stylesheet" type="text/css" href="./status.css" />
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet"/>
+	<title>HTML LIST</title>
+	<style>
+	* {margin:0; padding:0;}
+	body {background-color:#fff; font-family:"Noto Sans KR", san-serif; padding:20px;}
+	caption {display:none; font-size:0; line-height:0; height:0; width:0;}
+	h1 {font-size:24px; margin-bottom:10px;}
+	.note {overflow:hidden; background-color:#eee; border:2px dashed #666; padding:10px;}
+	.note ul {overflow:hidden; padding-left:15px;}
+	.note ul li {list-style:bullet; font-size:12px; line-height:1.5em;}
+	.note ul li em {font-size:14px; font-style:normal; font-weight:bold;}
+	.note ul li .total {color:#666;}
+	.note ul li .end {color:#8059ea;}
+	.note ul li .progress {color:#666;}
+	.note dl {display:flex; overflow:hidden;}
+	.note dl dt {margin-right:4px;}
+	.note dl dt:before {content:"#"; font-weight:bold;}
+	.note dl dt:after {content:" : ";}
+	.note dl dd {margin-right:10px;}
+
+	.status {overflow:hidden; margin-bottom:10px;}
+	.status {overflow:hidden;}
+	.status li {float:left; list-style:none; margin-left:5px;}
+	.status li:first-child {margin-left:0;}
+	.status li a {display:block; font-family:consolas; font-size:11px; text-decoration:none; padding-right:5px; padding-left:5px; height:18px;}
+	.status li a:hover {background-color:#dfb8b6; color:#fff;}
+	section {overflow:hidden;}
+	table {width:100%; border-collapse:collapse; /* table-layout:fixed; */}
+	table ~ table {margin-top:15px;}
+	th, td {word-break:break-all;}
+	tbody .end td {background-color:#ccc;}
+	tbody .modify td {background-color:#e8e9f6;}
+	tbody .ing td {background-color:#ffd200;}
+	thead th {background-color:#eee; color:#333; border:1px solid #666; font-size:13px; padding-top:5px; padding-bottom:5px;}
+	tbody td {border:1px solid #666; font-size:13px; padding:5px;}
+	tbody td.start {color:#ff6028; font-weight:bold;}
+	tbody td.name {color:#555;}
+	tbody td.end {color:#371ad3; font-size:11px; font-weight:bold !important;}
+	tbody td.status {color:#371ad3; font-weight:bold;}
+	tbody .center {text-align:center; padding-right:0; padding-left:0;}
+	tbody p.link,
+	tbody a {display:inline-block; cursor:pointer; font-family:consolas !important; font-size:12px; text-decoration:none; color:#111;}
+	tbody p.link:hover, tbody a:hover {text-decoration:underline;}
+	tbody .comment p {position:relative; font-size:12px; padding-left:12px;}
+	tbody .comment p:before {content:'*'; font-size:16px; font-weight:bold; line-height:24px; position:absolute; left:0; top:0;}
+	tbody .comment a {color:#a70404; font-weight:bold;}
+
+	.site_nav {background-color:#fff;  position:sticky; left:0; top:0; padding:10px 0; z-index:999;}
+	.site_nav ul {display:flex; overflow-x:auto;}
+	.site_nav ul li {flex:none; list-style:none;}
+	.site_nav ul li ~ li {margin-left:5px;}
+	.site_nav a {background-color:#ddd; display:block; color:#666; font-size:14px; text-align:center; text-decoration:none; padding:5px;}
+	.site_nav ul li.on a {background-color:#ffb800; color:#222; font-weight:bold;}
+
+	thead .menu_section th {background:linear-gradient(106.79deg, #2141A0 0%, #1A3279 100%); box-sizing:border-box; padding:4px;}
+	thead .menu_section th h1 {color:#fff; font-size:18px; text-align:center; margin:0;}
+	.menu_section_02 td {background-color:#e0e0e0; font-weight:bold; text-align:center;}
+
+	.menu_wrap.all .menu_list {display:block;}
+	.menu_list {display:none; margin-top:30px;}
+	.menu_list.on {display:block;}
+
+	th:nth-child(1), td:nth-child(1) {width:11%;}
+	th:nth-child(2), td:nth-child(2) {width:12%;}
+	th:nth-child(3), td:nth-child(3) {width:11%;}
+	th:nth-child(4), td:nth-child(4) {width:10%;}
+	th:nth-child(5), td:nth-child(5) {width:4%;}
+	th:nth-child(6), td:nth-child(6) {width:16%;}
+	th:nth-child(7), td:nth-child(7) {width:4%;}
+	th:nth-child(8), td:nth-child(8) {width:5%;}
+	th:nth-child(9), td:nth-child(9) {width:27%;}
+
+	/* MOBILE */
+	@media screen and (max-width:768px){
+		body {padding:10px;}
+		h1 {font-size:16px;}
+		.note {display:none; overflow:hidden; line-height:0; height:0; width:0;}
+		table tbody tr td {font-size:13px;}
+		th:nth-child(5),
+		td:nth-child(5),
+		th:nth-child(7),
+		th:nth-child(8),
+		th:nth-child(9),
+		td:nth-child(9),
+		th:nth-child(10),
+		td.center {display:none; overflow:hidden; line-height:0; height:0; width:0;}
+
+		th:nth-child(1), td:nth-child(1) {width:16%;}
+		th:nth-child(2), td:nth-child(2) {width:16%;}
+		th:nth-child(3), td:nth-child(3) {width:16%;}
+		th:nth-child(4), td:nth-child(4) {width:16%;}
+		th:nth-child(6), td:nth-child(6) {width:36%;}
+	}
+
+	/* MENU:HOVER_COLOR */
+	table tbody tr:hover td {transition:all 0.3s;}
+	table tbody tr.menu01:hover td {background-color:#cec1d6;}
+	table tbody tr.menu02:hover td {background-color:#efffd9;}
+	table tbody tr.menu03:hover td {background-color:#c8dfe8;}
+	table tbody tr.menu04:hover td {background-color:#99f2e2;}
+	table tbody tr.menu05:hover td {background-color:#dfb8b6;}
+	table tbody tr.menu06:hover td {background-color:#aaddf2;}
+	table tbody tr.menu07:hover td {background-color:#ffd665;}
+	table tbody tr.menu08:hover td {background-color:#76d7ff;}
+	table tbody tr.menu09:hover td {background-color:#edcaff;}
+	table tbody tr.menu10:hover td {background-color:#d4e4f5;}
+	table tbody tr.menu11:hover td {background-color:#41ffb7;}
+	table tbody tr.menu12:hover td {background-color:#f288af;}
+	table tbody tr.menu13:hover td {background-color:#7fb2f0;}
+	table tbody tr.menu14:hover td {background-color:#eddfaf;}
+
+	#layout {margin-bottom:20px;}
+	.g_wrap > p {font-size:13px; line-height:20px;}
+	</style>
+</head>
+
+<body>
+<h1>HTML LIST</h1>
+
+<div class="menu_wrap all">
+	<!-- list 템플릿 -->
+	<section class="menu_list">
+		<table>
+			<colgroup>
+				<col width="20%">
+				<col width="20%">
+				<col width="20%">
+				<col width="40%">
+			</colgroup>
+			<thead>
+				<tr>
+					<th scope="col">번호</th>
+					<th scope="col">페이지 명</th>
+					<th scope="col">LINK(로컬link/깃허브link)</th>
+					<th scope="col">COMMENT</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="menu01">
+					<td colspan="4">총 38페이지</td>
+				</tr>
+				<tr class="menu01">
+					<td>1</td>
+					<td class="depth01">메인페이지 (로그인 전)</td>
+					<td><a href="main_before_login.html" target="_blank">메인페이지 (로그인 전)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/main_before_login.html" target="_blank">메인페이지 (로그인 전)</a></td>
+					<td class="comment">10/3 체크완료 / 연두색 회신 대기중</td>
+				</tr>
+				<tr class="menu01">
+					<td>2</td>
+					<td class="depth01">메인페이지 (로그인 후)</td>
+					<td><a href="main_after_login.html" target="_blank">메인페이지 (로그인 후)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/main_after_login.html" target="_blank">메인페이지 (로그인 후)</a></td>
+					<td class="comment">10/3 체크완료 / 연두색 회신 대기중</td>
+				</tr>
+				<tr class="menu01">
+					<td>3</td>
+					<td class="depth01">메인페이지 (연동 성공)</td>
+					<td><a href="main_connect_success.html" target="_blank">메인페이지 (연동 성공)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/main_connect_success.html" target="_blank">메인페이지 (연동 성공)</a></td>
+					<td class="comment">구분선가이드 필요 / 연두색 회신 대기중</td>
+				</tr>
+				<tr class="menu01">
+					<td>4</td>
+					<td class="depth01">로그인</td>
+					<td><a href="login.html" target="_blank">로그인</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/login.html" target="_blank">로그인</a></td>
+					<td class="comment">10/3 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>5</td>
+					<td class="depth01">회원가입</td>
+					<td><a href="join.html" target="_blank">회원가입</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/join.html" target="_blank">회원가입</a></td>
+					<td class="comment">10/3 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>6</td>
+					<td class="depth01">회원가입 완료</td>
+					<td><a href="join_success.html" target="_blank">회원가입 완료</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/join_success.html" target="_blank">회원가입 완료</a></td>
+					<td class="comment">10/3 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>7</td>
+					<td class="depth01">제휴문의</td>
+					<td><a href="partnership.html" target="_blank">제휴문의</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/partnership.html" target="_blank">제휴문의</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>8</td>
+					<td class="depth01">출금하기</td>
+					<td><a href="withdrawal.html" target="_blank">출금하기</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/withdrawal.html" target="_blank">출금하기</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>9</td>
+					<td class="depth01">연동하기(시작화면)</td>
+					<td><a href="connect_step1.html" target="_blank">연동하기(시작화면)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/connect_step1.html" target="_blank">연동하기(시작화면)</a></td>
+					<td class="comment">10/3 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>10</td>
+					<td class="depth01">연동하기-예 누르면 나오는 페이지 1/2</td>
+					<td><a href="connect_step2_1.html" target="_blank">연동하기-예 누르면 나오는 페이지 1/2</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/connect_step2_1.html" target="_blank">연동하기-예 누르면 나오는 페이지 1/2</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>11</td>
+					<td class="depth01">연동하기-아니오 누르면 나오는 페이지</td>
+					<td><a href="connect_step2_2.html" target="_blank">연동하기-아니오 누르면 나오는 페이지</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/connect_step2_2.html" target="_blank">연동하기-아니오 누르면 나오는 페이지</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>12</td>
+					<td class="depth01">연동하기-계정 연동 실패</td>
+					<td><a href="connect_failed.html" target="_blank">연동하기-계정 연동 실패</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/connect_failed.html" target="_blank">연동하기-계정 연동 실패</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>13</td>
+					<td class="depth01">연동하기-계정 연동 성공</td>
+					<td><a href="connect_success.html" target="_blank">연동하기-계정 연동 성공</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/connect_success.html" target="_blank">연동하기-계정 연동 성공</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>14</td>
+					<td class="depth01">친구 코드 발급 전</td>
+					<td><a href="invite_before.html" target="_blank">친구 코드 발급 전</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/invite_before.html" target="_blank">친구 코드 발급 전</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>15</td>
+					<td class="depth01">친구 코드 발급 후</td>
+					<td><a href="invite_after.html" target="_blank">친구 코드 발급 후</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/invite_after.html" target="_blank">친구 코드 발급 후</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>16</td>
+					<td class="depth01">마이페이지(메인)</td>
+					<td><a href="mypage.html" target="_blank">마이페이지(메인)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/mypage.html" target="_blank">마이페이지(메인)</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>17</td>
+					<td class="depth01">마이페이지(환경설정)</td>
+					<td><a href="mypage_setting.html" target="_blank">마이페이지(환경설정)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/mypage_setting.html" target="_blank">마이페이지(환경설정)</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>18</td>
+					<td class="depth01">마이페이지(비밀번호변경)</td>
+					<td><a href="mypage_pw_change.html" target="_blank">마이페이지(비밀번호변경)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/mypage_pw_change.html" target="_blank">마이페이지(비밀번호변경)</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>19</td>
+					<td class="depth01">회원탈퇴</td>
+					<td><a href="leave_member.html" target="_blank">회원탈퇴</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/leave_member.html" target="_blank">회원탈퇴</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>20</td>
+					<td class="depth01">페이백테스트(메인)</td>
+					<td><a href="payback_main.html" target="_blank">페이백테스트(메인)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/payback_main.html" target="_blank">페이백테스트(메인)</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>21</td>
+					<td class="depth01">페이백테스트(거래소선택)</td>
+					<td><a href="payback_step1.html" target="_blank">페이백테스트(거래소선택)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/payback_step1.html" target="_blank">페이백테스트(거래소선택)</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>22</td>
+					<td class="depth01">페이백테스트(레버리지)</td>
+					<td><a href="payback_step2.html" target="_blank">페이백테스트(레버리지)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/payback_step2.html" target="_blank">페이백테스트(레버리지)</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>23</td>
+					<td class="depth01">페이백테스트(시드체크)</td>
+					<td><a href="payback_step3.html" target="_blank">페이백테스트(시드체크)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/payback_step3.html" target="_blank">페이백테스트(시드체크)</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>24</td>
+					<td class="depth01">페이백테스트(거래횟수)</td>
+					<td><a href="payback_step4.html" target="_blank">페이백테스트(거래횟수)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/payback_step4.html" target="_blank">페이백테스트(거래횟수)</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>25</td>
+					<td class="depth01">페이백테스트(결과)</td>
+					<td><a href="payback_step5.html" target="_blank">페이백테스트(결과)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/payback_step5.html" target="_blank">페이백테스트(결과)</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>26</td>
+					<td class="depth01">페이백랭킹</td>
+					<td><a href="mypayback_rank.html" target="_blank">페이백랭킹</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/mypayback_rank.html" target="_blank">페이백랭킹</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>27</td>
+					<td class="depth01">뉴스페이지(메인)</td>
+					<td><a href="news_list.html" target="_blank">뉴스페이지(메인)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/news_list.html" target="_blank">뉴스페이지(메인)</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>28</td>
+					<td class="depth01">뉴스페이지(상세)</td>
+					<td><a href="news_detail.html" target="_blank">뉴스페이지(상세)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/news_detail.html" target="_blank">뉴스페이지(상세)</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>29</td>
+					<td class="depth01">서비스 소개</td>
+					<td><a href="service_introduce.html" target="_blank">서비스 소개</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/service_introduce.html" target="_blank">서비스 소개</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>30</td>
+					<td class="depth01">봇 소개</td>
+					<td><a href="bot_introduce.html" target="_blank">봇 소개</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/bot_introduce.html" target="_blank">봇 소개</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>31</td>
+					<td class="depth01">쿠폰(쿠폰 없을때)</td>
+					<td><a href="mypage_coupon_empty.html" target="_blank">쿠폰(쿠폰 없을때)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/mypage_coupon_empty.html" target="_blank">쿠폰(쿠폰 없을때)</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>32</td>
+					<td class="depth01">쿠폰(쿠폰 있을때)</td>
+					<td><a href="mypage_coupon.html" target="_blank">쿠폰(쿠폰 있을때)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/mypage_coupon.html" target="_blank">쿠폰(쿠폰 있을때)</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>33</td>
+					<td class="depth01">쿠폰(발급)</td>
+					<td><a href="mypage_coupon_issued.html" target="_blank">쿠폰(발급)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/mypage_coupon_issued.html" target="_blank">쿠폰(발급)</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>34</td>
+					<td class="depth01">서비스 없음</td>
+					<td><a href="no_service.html" target="_blank">서비스 없음</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/no_service.html" target="_blank">서비스 없음</a></td>
+					<td class="comment">10/4 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>35</td>
+					<td class="depth01">제휴거래소(전체)</td>
+					<td><a href="partnership_list.html" target="_blank">제휴거래소(전체)</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/partnership_list.html" target="_blank">제휴거래소(전체)</a></td>
+					<td class="comment">10/5 체크완료</td>
+				</tr>
+				<tr class="menu01">
+					<td>36</td>
+					<td class="depth01">셀퍼럴 상세페이지</td>
+					<td><a href="self_referral.html" target="_blank">셀퍼럴 상세페이지</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/self_referral.html" target="_blank">셀퍼럴 상세페이지</a></td>
+					<td class="comment"></td>
+				</tr>
+				<tr class="menu01">
+					<td>37</td>
+					<td class="depth01">거래소 페이백</td>
+					<td><a href="mypayback.html" target="_blank">거래소 페이백</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/mypayback.html" target="_blank">거래소 페이백</a></td>
+					<td class="comment"></td>
+				</tr>
+				<tr class="menu01">
+					<td>38</td>
+					<td class="depth01">나의 리워드</td>
+					<td><a href="myreward.html" target="_blank">나의 리워드</a>&nbsp;/&nbsp;<a href="https://christina-whwks.github.io/themeone/myreward.html" target="_blank">나의 리워드</a></td>
+					<td class="comment"></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+	<!--// list 템플릿 -->
+</div>
+
+</body>
+</html>
