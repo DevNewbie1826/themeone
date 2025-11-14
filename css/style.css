@@ -132,7 +132,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
     .pc {display: none;}
     .mobile {display: block;}
 
-    .blue-btn {font-size: 12px; border-radius: 10px;}
+    .blue-btn {padding: 8px 12px 6px 12px; font-size: 12px; border-radius: 10px;}
     /* padding: 8px 12px 6px 12px; */
     .line-btn {padding: 8px 12px 6px 12px; font-size: 12px; border-radius: 10px;}
     .blue-btn.h-btn, .line-btn.h-btn {height: 34px;}
@@ -1342,7 +1342,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 
 /* ============================== [ 봇 소개 페이지 ] ========================================================================================== */
 .bot-main .hero-banner {position: relative; margin: 13rem 0;}
-.bot-main .hero-banner .bg-blur {width: 75rem; height: 104rem; transform: rotate(-90deg); position: absolute; left: 25%; top: -100%; border-radius: 1047px;  background: linear-gradient(90deg, #0084FF 0%, #DC3AC7 100%); filter: blur(120px); z-index: 0;}
+.bot-main .hero-banner .bg-blur {width: 75rem; height: 104rem; transform:translate(-50%, -50%) rotate(-90deg); position: absolute; left: 50%; top: 50%; border-radius: 1047px;  background: linear-gradient(90deg, #0084FF 0%, #DC3AC7 100%); filter: blur(120px); z-index: 0;}
 .bot-main .hero-content {display: flex; flex-direction: column; row-gap: 4rem; position: relative; z-index: 1; margin: 0 auto;}
 .bot-main .hero-content .bot-image-box {padding: 2.4rem; border-radius: 3.2rem; background-color: #CCE4FF; width: 20rem; }
 .bot-main .hero-content .section-title h2 {color: #F4F5F7; text-align: center; font-size: 3.2rem; font-weight: 700; line-height: 150%;}
