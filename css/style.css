@@ -69,7 +69,7 @@ FF3A4E
 .blue-btn.contact-btn {display: flex; align-items: center; column-gap: 0.8rem;}
 .blue-btn.contact-btn figure {width: 2.4rem; height: 2.4rem;}
 .blue-btn.contact-btn span {font-size: 1.6rem; font-weight: 600; line-height: 2.8rem;}
-.blue-btn.reward-btn {padding: 1.2rem 0; width: 100%; font-size: 2rem; font-weight: 600; line-height: 3.6rem; display: flex; align-items: center; justify-content: center;}
+.blue-btn.reward-btn {padding: 1.2rem 0; width: 100%; font-size: 1.6rem; font-weight: 600; line-height: 3.6rem; display: flex; align-items: center; justify-content: center;}
 .blue-btn.paste-btn {padding: 0.8rem 1.2rem; font-size: 1.2rem; font-weight: 700; line-height: 1.8rem; border-radius: 1.2rem;}
 .blue-btn.withdrawal-btn {padding: 2rem 0; width: 100%; font-size: 1.6rem; color: #fff; font-weight: 500; line-height: 150%;}
 .blue-btn:disabled {background-color: #203453; color: #F4F5F7;}
@@ -528,7 +528,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 .sub {max-width: 120rem; margin: 0 auto; width: 100%; margin-top: 6.4rem; margin-bottom: 6.4rem;}
 .section-title {margin-bottom: 4.8rem; display: flex; align-items: center; justify-content: space-between;}
 .section-title a figure {width: 2.4rem; height: 2.4rem;}
-.section-title h2 {color: #F4F5F7; font-size: 2.8rem; font-weight: 600; line-height: 140%;}
+.section-title h2 {color: #F4F5F7; font-size: 2.8rem; font-weight: 600; line-height: 150%;}
 
 @media screen and (max-width: 1332px) {
     .sub {padding: 0 2rem;}
@@ -544,14 +544,18 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 /* 로그인 후 섹션 */
 .suggest-section {margin-top: 8rem;}
 .suggest-section .section-title {margin-bottom: 0;}
-.suggest-container {width: 100%; background-color: #1B202A; border-radius: 2rem; padding: 4rem; display: flex; flex-direction: column; row-gap: 4rem;}
+.suggest-container {width: 100%; background-color: #1B202A; border-radius: 2rem; padding: 4rem; display: flex; flex-direction: column; row-gap: 4rem;shadow-short:where(.dark,.dark *):not(:where(.dark .light,.dark .light *)) {
+    --tw-shadow: 0px 4px 12px 0px var(--tw-shadow-color, var(--shadow-color-1, #0000001a)), inset 0px 0px 1px 0px var(--tw-shadow-color, var(--shadow-color-2, #fff3));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+}
 .suggest-check-box {display: flex; flex-direction: column; row-gap: 8rem; align-items: center; justify-content: center;}
-.suggest-check-box > figure {width: 10.4rem; height: 7.7rem;}
-.connect-container {padding: 2rem; background-color: #121721; border-radius: 1.6rem; display: flex; align-items: center; width: 100%; justify-content: space-between;}
+.suggest-check-box > figure {width: 7rem; height: 8rem;}
+.connect-container {padding: 2rem; background-color: #121721; border: 1px solid #0084FF; border-radius:1.6rem; display: flex; align-items: center; width: 100%; justify-content: space-between;}
 .connect-container .connect-text-group {display: flex; flex-direction: column; row-gap: 0.5rem;}
 .connect-container .connect-text-group .connect-title {display: flex; align-items: center; column-gap: 0.4rem;}
 .connect-container .connect-text-group .connect-title figure {width: 2.4rem; height: 2.4rem;}
-.connect-container .connect-text-group .connect-title span {color: #F4F5F7; font-size: 1.6rem; font-weight: 700; line-height: 2.4rem; padding-top: 0.3rem;}
+.connect-container .connect-text-group .connect-title span {color: #F4F5F7; font-size: 1.8rem; font-weight: 600; line-height: 2.4rem; padding-top: 0.3rem;}
 .connect-container .connect-text-group p {color: #A09FA5; font-size: 1.6rem; font-weight: 500; line-height: 2.4rem;}
 .connect-container > figure {width: 2.4rem; height: 2.4rem;}
 
@@ -571,7 +575,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 .connect-section {width: 100%; margin-top: 8rem;}
 .connect-wrapper {display: flex; align-items: stretch; column-gap: 2rem; width: 100%;}
 .connect-left {width: 40%; display: flex; flex-direction: column; row-gap: 2rem;}
-.connect-card {padding: 3.6rem; border-radius: 2rem; background-color: #1B202A;}
+.connect-card {padding: 3.2rem; border-radius: 3.6rem; background-color: #1B202A;}
 .reward-box {display: flex; flex-direction: column; row-gap: 2rem;}
 .reward-box .reward-title {color: #A09FA5; font-size: 2rem; font-weight: 600; line-height: 3rem;}
 .reward-box .reward-value-box {display: flex; align-items: flex-end; column-gap: 1rem;}
@@ -1583,9 +1587,9 @@ text-align: center
 /* ============================== [ 마이페이지 - 쿠폰 ] ========================================================================================== */
 .coupon-container .coupon-box {display: flex; flex-direction: column; row-gap: 120px; width: 41.2rem; margin: 0 auto;}
 .coupon-empty {display: flex; flex-direction: column; justify-content: center; align-items: center; row-gap: 2rem;}
-.coupon-empty figure {width: 12rem; height: 12rem;}
-.coupon-empty span {color: #F4F5F7; font-size: 3.2rem; font-weight: 700; line-height: 150%;}
-.coupon-empty .line-btn {border-radius: 4rem;}
+/* .coupon-empty figure {width: 12rem; height: 12rem;} */
+.coupon-empty span {margin-bottom:2rem; color: #F4F5F7; font-size: 2.4rem; font-weight: 500; line-height: 150%;}
+/* .coupon-empty .line-btn {border-radius: 4rem;} */
 
 .coupon-list {display: flex; flex-direction: column; row-gap: 2rem; align-items: center; justify-content: center; width: 100%;}
 .coupon-list li {display: flex; align-items: stretch; width: 100%;}
