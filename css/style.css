@@ -37,7 +37,6 @@ figure img {width: 100%; height: 100%; object-fit: contain; display: block;}
 .highlight-blue {color: #0084FF;}
 .highlight-red {color: #FF6676;}
 
-FF3A4E
 /* font weight */
 .bold-txt {font-weight: 900;}
 
@@ -49,14 +48,17 @@ FF3A4E
     background: linear-gradient(90deg, #DC3AC7 0%, #0084FF 100%);
     cursor: pointer;
  color: #F4F5F7; font-size: 1.4rem; font-weight: 500; line-height: 150%; text-align: center;}
- .bluej-btn {padding: 2rem 2.4rem;
-    width: 100%;
-    border-radius: 2rem;
-    border: none;
-    font-weight: 600;
-    background: linear-gradient(90deg, #DC3AC7 0%, #0084FF 100%);
-    cursor: pointer;
- color: #F4F5F7; font-size: 1.4rem; font-weight: 500; line-height: 150%; text-align: center;}
+.bluej-btn {padding: 2rem 2.4rem;
+   width: 100%;
+   border-radius: 2rem;
+   border: none;
+   font-weight: 600;
+   background: linear-gradient(90deg, #DC3AC7 0%, #0084FF 100%);
+   cursor: pointer;
+   color: #F4F5F7; font-size: 1.4rem; font-weight: 500; line-height: 150%; text-align: center;}
+.bluej-btn:disabled {
+    color:#8D8AAE;
+    background: linear-gradient(90deg, #6B276A 0%, #0A4782 100%);}
  .bluel-btn {padding: 1.2rem 2.4rem;
     width: 100%;
     border-radius: 1.6rem;
@@ -108,7 +110,7 @@ input[type="checkbox"].basic-chk + label::before {content: ''; position: absolut
 input[type="checkbox"].basic-chk:checked + label::before {background-color: #3182F6;}
 input[type="checkbox"].basic-chk:checked + label::after {content: ''; position: absolute; left: 0.6rem; top: 42%; transform: translateY(-50%) rotate(45deg); width: 0.6rem; height: 1rem; border: solid white; border-width: 0 2px 2px 0;}
 
-input[type="checkbox"].block-chk {position: absolute; opacity: 0; width: 0; height: 0;}
+input[type="checkbox"].block-chk {position: relative; opacity: 0; width: 0; height: 0;}
 input[type="checkbox"].block-chk + label {display: flex; align-items: center; cursor: pointer; font-size: 1.4rem; font-weight: 500; line-height: normal; letter-spacing: -0.014px; position: relative; background-color: #121721; border: 1px solid #303540; padding: 1.2rem 2.4rem; border-radius: 2rem; height: 6rem; color: #F4F5F7; padding-left: 5.2rem;}
 input[type="checkbox"].block-chk + label a {color: #0084FF; font-size: 1.4rem; font-style: normal; font-weight: 500; line-height: 1; text-decoration-line: underline;}
 input[type="checkbox"].block-chk + label::before {content: ''; position: absolute; left: 2.4rem; top: 50%; transform: translateY(-50%); width: 2rem; height: 2rem; background-image: url('../img/icon/check_before.svg'); /* 선택 전 이미지 경로 */ background-size: contain; background-repeat: no-repeat; background-position: center; transition: all 0.2s ease;}
@@ -155,7 +157,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
     .input-field {font-size: 16px; padding: 20px 20px; border-radius: 16px;}
     .input-code-digit {max-width: 43px; width: 100%; padding: 20px 0; font-size: 16px;}
     .input-field-line {padding: 12px 20px; height: 60px; font-size: 16px; border-radius: 20px;}
-    .input-field-line.withdrawal {padding: 12px; height: fit-content; font-size: 14px;}
+    .input-field-line.withdrawal {padding: 12px; height: fit-content; font-size: 14px; border-radius: 12px;}
 
     input[type="checkbox"].block-chk + label {font-size: 13px; padding: 12px; padding-left: 40px; height: 60px;}
     input[type="checkbox"].block-chk + label::before {left: 12px; width: 20px; height: 20px;}
@@ -172,7 +174,9 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 }
 
 /* ============================== [ 헤더 header ] ========================================================================================== */
-.main-navigation {width: 100%; background-color: #121721;}
+.main-navigation {width: 100%; background-color: #121721;
+    /* border-bottom: 1px solid #2d303d; */
+    box-shadow: 4px 4px 12px 0 rgba(90, 99, 113, 0.2);}
 .nav-content {display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem;}
 .nav-content > div {width: 33%;}
 .nav-content .logo-container a h2 {color: #3182F6; text-align: center; font-size: 3.2rem; font-weight: 900; line-height: 4.8rem;}
@@ -200,7 +204,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 }
 @media screen and (max-width: 768px) {
     .nav-center {display: none;}
-    .nav-content {padding: 20px;}
+    .nav-content {padding: 16px 20px 16px 20px;}
     .nav-content .logo-container a figure {width: 118px;}
     .nav-content > div:last-child {width: 80%;}
     .nav-content .nav-right {column-gap: 8px;}
@@ -446,10 +450,10 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 }
 
 /* ============================== [ 모바일용 메뉴 ] ========================================================================================== */
-.main-navigation {position: relative; z-index: 1;}
+.main-navigation {position: fixed; z-index: 10;}
 .mobile-menu {display: none; position: fixed; top: 0; right: -100%; width: 100%; height: auto; background-color: #1B202A; z-index: 1002; transition: right 0.3s ease; padding: 20px; box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);}
 .mobile-menu.active {right: 0;}
-.mobile-menu-header {display: flex; align-items: center; justify-content: space-between; padding-bottom: 20px;}
+.mobile-menu-header {display: flex; align-items: center; justify-content: space-between; padding-bottom: 36px;}
 .mobile-menu-header .logo-container figure {width: 118px;}
 .mobile-menu-close {background: transparent; padding: 0;}
 .mobile-menu-close figure {width: 24px; height: 24px;}
@@ -482,6 +486,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 }
 
 .hero-section {
+    padding-top: 7.1rem;
     width: 100%;
     min-height:80vh; 
     /* 원하는 높이 — 배너 높이 */
@@ -499,7 +504,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 @media (max-width: 768px) {
     .hero-section {
         min-height: 40vh;  /* 모바일에서는 45vh 정도로 줄이기 */
-        padding: 3rem 0;   /* 내부 여백도 줄여야 전체가 낮아져 보임 */
+        padding-top: 7.1rem 0;   /* 내부 여백도 줄여야 전체가 낮아져 보임 */
         background-position: center top; /* 이미지 위쪽이 보이게 하고 싶으면 */}
     }
 .hero-content {display: flex; flex-direction: column; margin: 18rem auto; align-items: center; row-gap: 4.8rem;}
@@ -542,7 +547,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 }
 
 /* 로그인 후 섹션 */
-.suggest-section {margin-top: 8rem;}
+.suggest-section {margin-top: 12rem;}
 .suggest-section .section-title {margin-bottom: 0;}
 .suggest-container {width: 100%; background-color: #1B202A; border-radius: 2rem; padding: 4rem; display: flex; flex-direction: column; row-gap: 4rem;shadow-short:where(.dark,.dark *):not(:where(.dark .light,.dark .light *)) {
     --tw-shadow: 0px 4px 12px 0px var(--tw-shadow-color, var(--shadow-color-1, #0000001a)), inset 0px 0px 1px 0px var(--tw-shadow-color, var(--shadow-color-2, #fff3));
@@ -560,7 +565,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 .connect-container > figure {width: 2.4rem; height: 2.4rem;}
 
 @media screen and (max-width: 768px) {
-    .suggest-section {padding-right: 20px;}
+    .suggest-section {padding-top: 20px; padding-right: 20px;}
     .suggest-section .section-title h2 {font-size: 16px; line-height: 24px;}
     .suggest-container {row-gap: 40px; padding: 20px;}
     .suggest-check-box {row-gap: 40px;}
@@ -572,7 +577,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 }
 
 /* 연동성공 섹션 */
-.connect-section {width: 100%; margin-top: 8rem;}
+.connect-section {width: 100%; margin-top: 12rem;}
 .connect-wrapper {display: flex; align-items: stretch; column-gap: 2rem; width: 100%;}
 .connect-left {width: 40%; display: flex; flex-direction: column; row-gap: 2rem;}
 .connect-card {padding: 3.2rem; border-radius: 3.6rem; background-color: #1B202A;}
@@ -600,7 +605,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 .my-exchange-list li a .my-value-box .my-value {color: #F4F5F7; font-size: 2.4rem; font-weight: 500; line-height: 3.6rem;}
 
 @media screen and (max-width: 768px){
-    .connect-section {padding-right: 20px; margin-top: 40px;}
+    .connect-section {padding-right: 20px; margin-top: 88px;}
     .connect-wrapper {flex-direction: column; row-gap: 20px;}
     .connect-left {width: 100%;display: flex;
     flex-direction: column;
@@ -761,7 +766,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 .sub-section {padding: 4rem; border-radius: 3.2rem; background-color: #1B202A;}
 
 /* ============================== [ 로그인 ] ========================================================================================== */
-.sub-content.login-content {width: 80rem;}
+.sub-content.login-content {width: 80rem; padding-top: 7.1rem;}
 .login-form-section {display: flex; flex-direction: column; padding: 4rem 2.4rem; max-width: 44.2rem; width: 44.2rem;}
 .login-form-section .form-title {margin-bottom: 8rem;}
 .login-form-section .form-title h1 {color: #F4F5F7; font-size: 2.4rem; font-weight: 600; line-height: 1;}
@@ -769,6 +774,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 .password-group {position: relative;}
 .password-group .hide-btn {position: absolute; top: 50%; transform: translateY(-50%); right: 2.4rem; background-color: transparent;}
 .password-group .hide-btn figure {width: 2rem; height: 2rem;}
+.password-group .hide-btn svg {color:#A09FA5;}
 .login-button-container {margin-top: 6rem; width: 100%; margin-bottom: 4.8rem;}
 .login-button-container .blue-btn {width: 100%; }
 /* border-radius: 4rem; */
@@ -777,12 +783,12 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 .login-form-section .form-links .form-link:after {content: ''; width: 1px; height: 1.2rem; background-color: #A09FA5; position: absolute; top: 0; right: -0.8rem;}
 .login-form-section .form-links .form-link:last-child:after {display: none;}
 
-.promo-section {max-width: 44.2rem; width: 44.2rem; display: flex; flex-direction: column; row-gap: 4rem;}
+.promo-section {max-width: 44.2rem; width: 44.2rem; display: flex; flex-direction: column; row-gap: 4rem; padding: 3.6rem;}
 .promo-section .promo-text-content p {color: #F4F5F7; font-size: 2.4rem; font-weight: 600; line-height: 3.2rem;}
 .promo-image-container {border-radius: 4rem; background-color: #CCE4FF; padding: 4rem;}
 
 @media screen and (max-width: 768px) {
-    .sub-content.login-content {width: 100%; padding: 0 2rem; margin-top: 0;}
+    .sub-content.login-content {width: 100%; padding: 0 2rem; margin-top: 16rem;}
     .sub-wrapper.login-wrapper {flex-direction: column; row-gap: 2rem;}
     .login-form {row-gap: 12px;}
     .login-form-section {width: 100%; max-width: 100%; padding: 40px 20px;}
@@ -791,37 +797,38 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
     .login-form-section .form-title h1 {font-size: 20px;}
     .login-form-section .form-title {margin-bottom: 80px;}
     .login-button-container {margin-top: 68px; margin-bottom: 48px;}
-    .login-button-container .bluel-btn {padding: 14px 0; font-size: 16px; border-radius: 2.8rem; }
+    .login-button-container .bluel-btn {border-radius: 16px; padding: 14px 0; font-size: 16px; }
     .login-form-section .form-links .form-link {font-size: 12px;}
     .login-form-section .form-links .form-link:after {height: 12px;}
     .password-group .hide-btn {right: 24px;}
     .password-group .hide-btn figure {width: 20px; height: 20px;}
 
-    .promo-section {padding: 40px;}
+    .promo-section {padding: 28px;}
     .promo-section .promo-text-content p {font-size: 24px; line-height: 33.6px;}
     .promo-image-container {padding: 40px; border-radius: 40px;}
     .promo-section .blue-btn {padding: 16px 0; font-size: 16px; border-radius: 20px;}
 }
 
 /* ============================== [ 회원가입 ] ========================================================================================== */
-.join-content {max-width: 56rem; width: 100%;}
+.join-content {max-width: 56rem; width: 100%; padding-top: 7.1rem;}
 .join-wrapper {margin-top: 4rem;}
 .join-title-box {display: flex; flex-direction: column; row-gap: 1.2rem; margin-bottom: 8rem;}
 .join-title-box h2 {color: #F4F5F7; font-size: 2.4rem; font-weight: 600; line-height: 150%;}
 .join-title-box p {color: #A09FA5; font-size: 1.6rem; font-weight: 500; line-height: 150%;}
 .join-form {display: flex; flex-direction: column; row-gap: 1.2rem;}
-.exp-box {display: flex; flex-direction: column; padding-left: 0.4rem; margin-bottom: 8rem;}
+.exp-box {display: flex; flex-direction: column; padding-left: 0.4rem;margin-bottom: 3rem;}
+.exp-box-mb {margin-bottom: 6rem;}
 .exp-box .exp-row {display: flex; align-items: center; column-gap: 0.8rem;}
 .exp-box .exp-row figure {width: 1.6rem; height: 1.6rem;}
 .exp-box .exp-row span {color: #A09FA5; font-size: 1.2rem; font-weight: 500; line-height: 140%;}
 .exp-box .exp-row span.checked {color: #0084FF;}
 .chk-group {padding: 1.2rem 2.4rem; height: 6rem; border-radius: 2rem; border: 1px solid #303540; background-color: #121721; display: flex; align-items: center; justify-content: flex-start;}
-.join-form .form-links {display: flex; align-items: center; justify-content: center; width: 100%; margin: 8rem 0 2rem 0;}
+.join-form .form-links {display: flex; align-items: center; justify-content: center; width: 100%; margin: 2rem 0 2rem 0;}
 .join-form .form-links span {color: #A09FA5; font-size: 1.2rem; font-weight: 500; line-height: 1;}
 .join-form .form-links a {color: #0084FF; font-size: 1.2rem; font-weight: 500; line-height: 1; text-decoration-line: underline;}
 
 @media screen and (max-width: 768px) {
-    .join-content {max-width: 100%; margin-top: 0; padding: 0 20px 40px 20px;}
+    .join-content {max-width: 100%; margin-top: 0; padding: 100px 20px 40px 20px;}
     .join-wrapper {margin-top: 40px;}
     .join-title-box {margin-bottom: 80px;}
     .join-title-box h2 {font-size: 24px;}
@@ -845,7 +852,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 }
 
 /* ============================== [ 회원가입 완료 & 제휴 문의 ] ========================================================================================== */
-.success-container {display: flex; flex-direction: column; row-gap: 4rem; margin-bottom: 8.8rem;}
+.success-container {display: flex; flex-direction: column; row-gap: 4rem; padding-top: 7.1rem; margin-bottom: 8.8rem;}
 .success-container .success-txt-box {position: relative; padding-top: 8rem;}
 .success-container p {color: #F4F5F7; font-size: 2.8rem; font-weight: 600; line-height: 3.8rem; text-align: center;}
 .success-container figure.point {width: 8rem; height: 8rem; position: absolute; top: -150%; right: -15%;}
@@ -857,7 +864,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 
 @media screen and (max-width: 768px) {
     .sub-content {min-height: 32vh;}
-    .success-content {margin-top: 180px;}
+    .success-content {margin-top: 71px;}
     .success-container p {font-size: 20px; line-height: 28px;}
     .success-container figure.point {width: 40px; height: 40px; top: -110%; right: -12%;}
     .success-container figure.cloud {width: 51px; height: 32px;}
@@ -868,7 +875,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 }
 
 /* ============================== [ 출금하기 ] ========================================================================================== */
-.withdrawal-content {max-width: 80rem; width: 100%; margin-bottom: 20rem;}
+.withdrawal-content {padding-top: 7.1rem; max-width: 80rem; width: 100%; margin-bottom: 20rem;}
 .withdrawal-wrapper {padding: 4rem; border-radius: 3.2rem; background-color: #1B202A;}
 .withdrawal-wrapper .section-title {display: flex; flex-direction: column; row-gap: 0.8rem; align-items: center; justify-content: center; margin-bottom: 4rem;}
 .withdrawal-wrapper .section-title h2 {color: #F4F5F7; text-align: center; font-size: 2.8rem; font-weight: 600; line-height: 150%;}
@@ -882,7 +889,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 .withdrawal-wrapper .btn-group {margin-top: 12rem;}
 
 @media screen and (max-width: 768px) {
-    .withdrawal-content {padding: 0 20px; margin-top: 20px; margin-bottom: 200px;}
+    .withdrawal-content {padding: 0 20px; margin-top: 100px; margin-bottom: 200px;}
     .withdrawal-wrapper {padding: 20px;}
     .withdrawal-wrapper .section-title h2 {font-size: 20px;}
     .withdrawal-wrapper .section-title p {font-size: 12px;}
@@ -894,7 +901,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 
 /* ============================== [ 연동하기 + 친구초대(코드발급) ] ========================================================================================== */
 /* step1 (초기화면) */
-.connect-content {max-width: 68rem; width: 100%; margin-bottom: 20rem;}
+.connect-content {max-width: 68rem; width: 100%; padding-top: 7.1rem; margin-bottom: 20rem; }
 .connect-content .connect-wrapper {padding: 3.2rem; border-radius: 3.2rem; background-color: #1B202A; display: flex; flex-direction: column; row-gap: 8rem;}
 .connect-content .connect-wrapper .section-title {display: flex; flex-direction: column; row-gap: 0.8rem; align-items: flex-start; margin-bottom: 0;}
 .connect-content .connect-wrapper .section-title a figure {width: 3.2rem; height: 3.2rem;}
@@ -906,7 +913,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 .connect-content .connect-wrapper .btn-group.btn-one a {width: 100%;}
 
 @media screen and (max-width: 768px) {
-    .connect-content {padding: 0 20px; margin-top: 20px; margin-bottom: 400px;}
+    .connect-content {padding: 0 20px; margin-top: 100px; margin-bottom: 400px;}
     .connect-content .connect-wrapper {padding: 40px 20px 20px 20px; row-gap: 40px;}
     .connect-content .connect-wrapper.step {padding: 20px;}
     .connect-content .connect-wrapper.step .section-title {row-gap: 12px;}
@@ -982,7 +989,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 }
 
 /* ============================== [ 마이페이지 ] ========================================================================================== */
-.mypage-content {max-width: 86rem; width: 100%; margin: 12rem auto; display: flex; flex-direction: column; row-gap: 4rem;}
+.mypage-content {max-width: 86rem; width: 100%;padding-top: 7.1rem; margin: 12rem auto; display: flex; flex-direction: column; row-gap: 4rem;}
 .user-info-container {display: flex; align-items: center; column-gap: 1.2rem;}
 .user-info-container > figure {width: 5.6rem; height: 5.6rem;}
 .user-info-container .user-info-txt {display: flex; flex-direction: column;}
@@ -1008,11 +1015,11 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 .mypage-submenu-list li a .submenu-arrow span.after {color: #0084FF;}
 
 @media screen and (min-width: 769px) and (max-width: 1331px) {
-    .mypage-content {padding: 0 2rem;}   
+    .mypage-content {padding: 7 2rem;}   
 }
 
 @media screen and (max-width: 768px) {
-    .mypage-content {margin: 100px auto 120px; padding: 0 20px; row-gap: 40px;}
+    .mypage-content {margin: 171px auto 120px; padding: 0 20px; row-gap: 40px;}
     .user-info-container > figure {width: 56px; height: 56px;}
     .mypage-menu-list li a figure {width: 24px; height: 24px;}
     .mypage-menu-list li a span {font-size: 14px;}
@@ -1024,7 +1031,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 
 /* ============================== [ 회원탈퇴 ] ========================================================================================== */
 /* 모달 레이아웃 상속받아 사용 */
-.sub-content.leave {max-width: 120rem; width: 100%;}
+.sub-content.leave {max-width: 120rem; width: 100%; padding-top: 7.1rem;}
 .fixed-modal {display: block; position: relative; max-width: 68rem; width: 68rem; top: auto; left: 50%; transform: none; transform: translateX(-50%); margin-bottom: 10rem;}
 .fixed-modal .inner {row-gap: 80px;}
 .fixed-modal .modal-header {align-items: flex-start;}
@@ -1093,7 +1100,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 /* ============================== [ 비밀번호 변경 ] ========================================================================================== */
 .pw-content {max-width: 56rem; width: 100%;}
 .pw-wrapper {display: flex; flex-direction: column; row-gap: 80px;}
-.pw-wrapper .pw-title-box {display: flex; flex-direction: column; padding-top: 40px; row-gap: 1.2rem;}
+.pw-wrapper .pw-title-box {display: flex; flex-direction: column; padding-top: 71px; row-gap: 1.2rem;}
 .pw-wrapper .pw-title-box h2 {color: #F4F5F7; font-size: 24px; font-weight: 600; line-height: 150%;}
 .pw-wrapper .pw-title-box p {color: #A09FA5; font-size: 16px; font-weight: 400; line-height: 150%;}
 .pw-form {display: flex; flex-direction: column;}
@@ -1111,7 +1118,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 .pw-form .btn-group button {padding: 20px 0; border-radius: 20px;}
 
 @media screen and (max-width: 768px) {
-    .pw-content {margin-top: 60px; padding: 0 20px; margin-bottom: 200px;}
+    .pw-content {margin-top: 60px; margin-bottom: 200px;}
     .pw-wrapper .pw-title-box {row-gap: 4px;}
     .pw-form .btn-group button {font-size: 16px;}
 }
@@ -1122,7 +1129,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 
 /* ============================== [ 제휴거래소 전체 ] ========================================================================================== */
 /* 메인 페이지 상속받아 사용 */
-.visual-section {max-width: 120rem; margin: 12.6rem auto; width: 100%; margin-bottom: 12rem;}
+.visual-section {max-width: 120rem; margin: 12rem auto; width: 100%; margin-bottom: 3.2rem;}
 .visual-section .img-box {width: 100%; height: 47rem; border-radius: 2rem; background-color: #1B202A; padding: 4rem;}
 .visual-section .img-box figure {width: 100%; height: 100%;}
 
@@ -1131,7 +1138,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 }
 
 @media screen and (max-width: 768px) {
-    .visual-section {padding: 20px; margin: 43px auto;}
+    .visual-section {padding: 20px; padding-top: 28px; margin-bottom: 0px;}
     .visual-section .img-box {height: 240px; padding: 40px; border-radius: 20px;}
     .visual-section .img-box figure {width: 100%; height: 100%;}
 }
@@ -1181,7 +1188,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 }
 
 @media screen and (max-width: 768px) {
-    .news-content {padding: 0 2rem; margin-top: 80px;}
+    .news-content {padding: 0 2rem; margin-top: 120px;}
     .news-content .section-title h2 {font-size: 24px;}
     .date-container .date {padding: 20px; border-radius: 16px;}
     .date-container .date p {font-size: 16px; line-height: 150%;}
@@ -1201,7 +1208,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 /* .service-main .section-title span {color: #A09FA5; text-align: center; font-size: 1.6rem; font-weight: 500; line-height: 150%; margin-bottom: 8rem;} */
 .service-main .section-title span.highlight-blue {color: #0084FF;}
 
-.service-main .hero-content {display: flex; flex-direction: column; row-gap: 2rem; margin: 8.8rem auto;}
+.service-main .hero-content {display: flex; flex-direction: column; row-gap: 2rem; padding-top: 7.1rem; margin: 8.8rem auto;}
 .service-main .hero-content .hero-subtitle {color: #F4F5F7; text-align: center; font-size: 1.6rem; font-weight: 500; line-height: 150%;}
 .service-main .hero-content .hero-title-text {color: #F4F5F7; text-align: center; font-size: 3.2rem; font-weight: 700; line-height: 140%;}
 
@@ -1331,14 +1338,14 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
     .service-main .chart-bar .chart-label {font-size: 14px;}
 
     .service-main .exchange-section {padding: 0 20px; margin-bottom: 120px;}
-    .service-main .tab-contents .tab-content .exchange-wrapper {padding: 40px 20px; row-gap: 80px;}
+    .service-main .tab-contents .tab-content .exchange-wrapper {padding: 40px 20px; row-gap: 40px;}
     .service-main .tab-contents .tab-content .exchange-wrapper .exchange-box h3 {font-size: 20px;}
     .service-main .tab-contents .tab-content .exchange-wrapper .exchange-box p {font-size: 12px;}
     .service-main .exchange-graph .chart-container {column-gap: 120px;}
     .service-main .exchange-graph .chart-container .chart-bar:first-child,
     .service-main .exchange-graph .chart-container .chart-bar:nth-child(2) {display: flex;}
 
-    .cta-section {padding: 200px 20px;}
+    .cta-section {padding: 48px 20px;}
     .cta-section .section-title {row-gap: 12px; margin-bottom: 40px;}
     .cta-section .section-title p {font-size: 12px;}
     .cta-section .section-title h2 {font-size: 24px;}
@@ -1347,8 +1354,10 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 }
 
 /* ============================== [ 봇 소개 페이지 ] ========================================================================================== */
-.bot-main .hero-banner {position: relative; margin: 13rem 0;}
-.bot-main .hero-banner .bg-blur {width: 75rem; height: 104rem; transform:translate(-50%, -50%) rotate(-90deg); position: absolute; left: 50%; top: 50%; border-radius: 1047px;  background: linear-gradient(90deg, #0084FF 0%, #DC3AC7 100%); filter: blur(120px); z-index: 0;}
+.bot-main .hero-banner {position: relative; padding-top: 7.1rem;  margin: 13rem 0;}
+.bot-main .hero-banner .bg-blur {
+animation: gradient-zoom 3s ease-in-out infinite alternate;
+     width: 70vh; height: 70vh; transform:translate(-50%, -50%) rotate(-90deg); position: absolute; left: 50%; top: 50%; border-radius: 1047px;  background: linear-gradient(90deg, #0084FF 0%, #DC3AC7 100%); filter: blur(120px); z-index: 0;}
 .bot-main .hero-content {display: flex; flex-direction: column; row-gap: 4rem; position: relative; z-index: 1; margin: 0 auto;}
 .bot-main .hero-content .bot-image-box {padding: 2.4rem; border-radius: 3.2rem; background-color: #CCE4FF; width: 20rem; }
 .bot-main .hero-content .section-title h2 {color: #F4F5F7; text-align: center; font-size: 3.2rem; font-weight: 700; line-height: 150%;}
@@ -1369,11 +1378,11 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 }
 
 @media screen and (min-width: 769px) and (max-width: 1195px) {
-    .bot-main .hero-banner .bg-blur {left: 0;}
+    .bot-main .hero-banner .bg-blur {}
 }
 
 @media screen and (max-width: 768px) {
-    .bot-main .hero-banner {margin: 80px auto 100px;}
+    .bot-main .hero-banner {margin: 71px auto 71px;}
     .bot-main .hero-banner .bg-blur {width: 75vw; height: 75vw; transform:translate(-50%, -50%) rotate(-90deg); top: 50%;left:50%; border-radius: 325px; background: linear-gradient(90deg, #0084FF 0%, #DC3AC7 100%); filter: blur(64px);}
     .bot-main .explain-section {padding-top: 80px;}
     .bot-main .hero-content {row-gap: 40px;}
@@ -1404,7 +1413,7 @@ input[type="checkbox"].block-chk:checked + label::before {background-image: url(
 .self-main .notification-box .noti-wrapper .noti-left p span.small {font-size: 1.4rem;}
 
 .self-main .banner-section {background-color: #00F0FF;}
-.self-main .banner-section .banner-wrapper {display: flex; align-items: center; justify-content: center;}
+.self-main .banner-section .banner-wrapper {padding-top: 7.1rem; display: flex; align-items: center; justify-content: center;}
 .self-main .banner-section .banner-wrapper figure {width: 28rem; height: 28rem;}
 
 .self-main .top-section {max-width: 120rem; width: 100%; margin: 8rem auto 20rem;}
@@ -1612,7 +1621,7 @@ text-align: center
 
 @media screen and (max-width: 768px) {
     .mypage-content.coupon {margin: 80px auto;}
-    .mypage-content.issued-coupon {margin: 80px auto;}
+    .mypage-content.issued-coupon {margin: 100px auto;}
     .counpon-empty figure {width: 80px; height: 80px;}
     .coupon-empty span {font-size: 20px;}
 
@@ -1633,7 +1642,7 @@ text-align: center
 }
 
 /* ============================== [ 거래소 페이백 ] ========================================================================================== */
-.payback-content {max-width: 120rem; width: 100%;}
+.payback-content {max-width: 120rem; width: 100%; padding-top: 7.1rem;}
 .payback-content .payback-wrapper {display: flex; flex-direction: column; row-gap: 40px; margin-bottom: 20rem;}
 .payback-content .exchange-info {display: flex; flex-direction: column; row-gap: 20px; align-items: center; justify-content: center;}
 .payback-content .exchange-info .exchange-logo {width: 50px; height: 50px;}
@@ -1676,7 +1685,7 @@ text-align: center
 }
 
 @media screen and (max-width: 768px) {
-    .payback-content {margin-top: 40px;}
+    .payback-content {margin-top: 80px;}
     .payback-content .exchange-info .exchange-uid {padding: 8px;}
     .payback-content .exchange-info .exchange-uid span {font-size: 12px;}
     .payback-content .tab-container .tab-buttons li .tab-btn {padding: 12px 0; font-size: 14px;}
@@ -1756,3 +1765,13 @@ text-align: center
 /* ============================== [ 서비스 준비중 ] ========================================================================================== */
 /* coupon_empty 상속받아사용 */
 .coupon-empty.service {row-gap: 52px;}
+
+ 
+ @keyframes gradient-zoom {
+     from {
+       transform:translate(-50%, -50%) rotate(-90deg) scale(1);
+     }
+     to {
+       transform:translate(-50%, -50%) rotate(-90deg) scale(1.5);
+     }
+    }
