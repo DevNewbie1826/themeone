@@ -21,8 +21,10 @@
 .month-name .month-element {font-size: 2.4rem; color: #F4F5F7; line-height: normal; font-family: 'Pretendard';}
 
 #date_box_single tbody td, #date_box tbody td {width: calc((100%)/7);}
-#date_box_single tbody tr:last-child td, #date_box tbody tr:last-child td {border-bottom: 1px solid #212121;}
-#date_box_single .week-name th, #date_box .week-name th {color: #666; padding: 1.2rem 0; font-size: 2rem; font-weight: 700; line-height: 150%; box-sizing: border-box;}
+#date_box_single tbody tr:last-child td, #date_box tbody tr:last-child td {
+	/* border-bottom: 1px solid #212121; */
+}
+#date_box_single .week-name th, #date_box .week-name th {color: #F4F5F7; padding: 1.2rem 0; font-size: 2rem; font-weight: 700; line-height: 150%; box-sizing: border-box;}
 #date_box_single .week-name th:first-child, #date_box .week-name th:first-child {color: #FF2C3E;}
 #date_box_single .week-name th:last-child, #date_box .week-name th:last-child {color: #0084FF;}
 #date_box_single .date-picker-wrapper .month-wrapper table .day, 
